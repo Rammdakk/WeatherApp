@@ -1,7 +1,8 @@
-package com.rammdakk.avitotestproj
+package com.rammdakk.avitotestproj.ui.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.rammdakk.avitotestproj.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

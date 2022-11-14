@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/nightHeaderTextView"
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/eveningHeaderTextView"
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="8dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/nightHeaderTextView"
+        app:layout_constraintEnd_toStartOf="@+id/nightHeaderTextView"
+        app:layout_constraintTop_toTopOf="@+id/nightHeaderTextView"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/morningNumberTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:text="Number"
+        app:layout_constraintBottom_toBottomOf="@+id/dayNumberTextView3"
+        app:layout_constraintEnd_toEndOf="@+id/morningHeaderTextView3"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/morningHeaderTextView3"
+        app:layout_constraintTop_toBottomOf="@+id/morningHeaderTextView3"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/morningHeaderTextView3"
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="16dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/eveningHeaderTextView"
+        app:layout_constraintEnd_toStartOf="@+id/dayHeaderTextView"
+        app:layout_constraintTop_toTopOf="@+id/dayHeaderTextView"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/dayNumberTextView3"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:text="Number"
+        app:layout_constraintBottom_toBottomOf="@+id/eveningNumberTextView"
+        app:layout_constraintEnd_toEndOf="@+id/dayHeaderTextView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/dayHeaderTextView"
+        app:layout_constraintTop_toBottomOf="@+id/dayHeaderTextView"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/eveningNumberTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:text="Number"
+        app:layout_constraintBottom_toBottomOf="@+id/nightNumberTextView"
+        app:layout_constraintEnd_toEndOf="@+id/eveningHeaderTextView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/eveningHeaderTextView"
+        app:layout_constraintTop_toBottomOf="@+id/eveningHeaderTextView"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/nightNumberTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="8dp"
+        android:text="Number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/nightHeaderTextView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/nightHeaderTextView"
+        app:layout_constraintTop_toBottomOf="@+id/nightHeaderTextView" />
+
+    <TextView
+        android:id="@+id/dayHeaderTextView"
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="12dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/eveningHeaderTextView"
+        app:layout_constraintEnd_toStartOf="@+id/eveningHeaderTextView"
+        app:layout_constraintTop_toTopOf="@+id/eveningHeaderTextView"
+        app:layout_constraintVertical_bias="0.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
