@@ -27,11 +27,78 @@
         android:layout_height="60dp"
         android:text="TextView" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/todayAllForecastRecyclerView"
+    <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_marginTop="10dp" />
+        android:layout_height="80dp"
+        android:paddingTop="5dp"
+        android:stretchColumns="*">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/morningTitleTw"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Утро"
+                android:textSize="24sp"/>
+
+            <TextView
+                android:id="@+id/dayTitleTw"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="День"
+                android:textSize="24sp"/>
+
+            <TextView
+                android:id="@+id/evTitleTw"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Вечер"
+                android:textSize="24sp"/>
+
+            <TextView
+                android:id="@+id/nightTitleTw"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Ночь"
+                android:textSize="24sp"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/morningNumberTw"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="18"
+                android:textSize="32sp"/>
+
+            <TextView
+                android:id="@+id/dayNumberTw"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="20"
+                android:textSize="32sp"/>
+
+            <TextView
+                android:id="@+id/evNumberTw"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="15"
+                android:textSize="32sp"/>
+
+            <TextView
+                android:id="@+id/nightNumberTw"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="10"
+                android:textSize="32sp"/>
+        </TableRow>
+    </TableLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/weekForecastRecycleView"
