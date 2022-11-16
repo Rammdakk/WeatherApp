@@ -1,4 +1,4 @@
-package com.rammdakk.avitotestproj.data
+package com.rammdakk.avitotestproj.data.model
 
 import com.google.gson.annotations.SerializedName
 

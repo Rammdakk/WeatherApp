@@ -3,10 +3,8 @@ package com.rammdakk.avitotestproj.ui.view.weatherFragment
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
-import com.rammdakk.avitotestproj.R
-import com.rammdakk.avitotestproj.data.WeatherPerDay
+import com.rammdakk.avitotestproj.data.model.WeatherPerDay
 import com.rammdakk.avitotestproj.databinding.WeekForecastCellBinding
-import com.rammdakk.avitotestproj.ui.stateholders.WeatherViewModel
 
 class WeatherAdapter(
     taskItemDiffCalc: WeatherItemDiffCalc,

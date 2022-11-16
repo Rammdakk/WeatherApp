@@ -1,10 +1,8 @@
 package com.rammdakk.avitotestproj.ui.view.weatherFragment
 
-import android.annotation.SuppressLint
 import androidx.recyclerview.widget.RecyclerView
-import com.rammdakk.avitotestproj.data.WeatherPerDay
+import com.rammdakk.avitotestproj.data.model.WeatherPerDay
 import com.rammdakk.avitotestproj.databinding.WeekForecastCellBinding
-import com.rammdakk.avitotestproj.ui.stateholders.WeatherViewModel
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 

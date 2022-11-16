@@ -13,7 +13,7 @@ import com.rammdakk.avitotestproj.ui.stateholders.WeatherViewModel
 class WeatherController(
     private val activity: Activity,
     rootView: View,
-    private val binding: FragmentWeatherBinding
+    private val binding: FragmentWeatherBinding,
     private val adapter: WeatherAdapter,
     private val lifecycleOwner: LifecycleOwner,
     private val viewModel: WeatherViewModel,

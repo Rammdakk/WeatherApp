@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.rammdakk.avitotestproj.databinding.FragmentWeatherBinding
+import com.rammdakk.avitotestproj.ioc.ViewModelFactory
 import com.rammdakk.avitotestproj.ioc.WeatherFragmentComponent
 import com.rammdakk.avitotestproj.ioc.WeatherFragmentViewComponent
 import com.rammdakk.avitotestproj.ui.stateholders.WeatherViewModel
@@ -19,7 +20,7 @@ class WeatherFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(this)[WeatherViewModel::class.java]
+        viewModel = ViewModelProvider(this, ViewModelFactory())[WeatherViewModel::class.java]
         fragmentComponent = WeatherFragmentComponent(fragment = this, viewModel = viewModel)
     }
 

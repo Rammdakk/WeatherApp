@@ -1,7 +1,7 @@
 package com.rammdakk.avitotestproj.ui.view.weatherFragment
 
 import androidx.recyclerview.widget.DiffUtil
-import com.rammdakk.avitotestproj.data.WeatherPerDay
+import com.rammdakk.avitotestproj.data.model.WeatherPerDay
 
 class WeatherItemDiffCalc : DiffUtil.ItemCallback<WeatherPerDay>() {
     override fun areItemsTheSame(oldItem: WeatherPerDay, newItem: WeatherPerDay): Boolean {
