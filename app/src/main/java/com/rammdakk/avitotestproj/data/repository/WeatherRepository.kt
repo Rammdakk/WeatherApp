@@ -36,6 +36,7 @@ class WeatherRepository @Inject constructor(
         cityName: String?
     ) {
         try {
+            Log.d("fdghajagd", (cityName==null).toString())
             val loadedList = if (cityName != null) {
                 withContext(Dispatchers.IO) {
                     dataSource.loadWeatherByCityName(cityName, cnt, units)
@@ -48,7 +49,10 @@ class WeatherRepository @Inject constructor(
             val resList: HashMap<String, WeatherPerDay> = HashMap()
             for (item in loadedList.list) {
                 val date = java.sql.Date(item.dateTime * 1000)
-                val data = resList.putIfAbsent(date.toString(), WeatherPerDay(date = date))
+                var data = resList.putIfAbsent(date.toString(), WeatherPerDay(date = date))
+                if (data == null) {
+                    data = resList.get(date.toString())
+                }
                 val calendar = GregorianCalendar.getInstance()
                 calendar.time = Date(item.dateTime * 1000)
                 when (calendar.get(Calendar.HOUR_OF_DAY)) {
@@ -58,7 +62,11 @@ class WeatherRepository @Inject constructor(
                     21 -> data?.evTemp = item.temp.temperature
                 }
             }
-            _cityInfo.postValue(CityInfo(loadedList.city.name, loadedList.list[0].temp.temperature))
+            _cityInfo.postValue(
+                CityInfo(
+                    loadedList.city.name, loadedList.list[0].temp.temperature, cityName == null
+                )
+            )
             _weather.postValue(ArrayList(resList.values).sortedBy { it.date })
         } catch (e: Exception) {
             _error.postValue(e)

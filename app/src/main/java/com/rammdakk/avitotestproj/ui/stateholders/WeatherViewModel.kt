@@ -24,7 +24,6 @@ class WeatherViewModel(
         offlineMessage.postValue("Ошибка: Нет доступа к интернету")
         connectivityObserver.observe().onEach {
             if (it == ConnectivityObserver.Status.Available) {
-//                weatherUseCase.loadWeather()
                 offlineMessage.postValue("")
             } else {
                 offlineMessage.postValue("Ошибка: Нет доступа к интернету")
@@ -32,7 +31,7 @@ class WeatherViewModel(
         }.launchIn(viewModelScope)
     }
 
-    fun updateTasks(
+    fun loadWeather(
         cnt: Int = 40,
         units: Units = Units.metric,
         lat: Double = 0.0,

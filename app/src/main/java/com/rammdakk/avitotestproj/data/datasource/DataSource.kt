@@ -65,12 +65,12 @@ class DataSource @Inject constructor(
                 if (response.isSuccessful) {
                     listOfWeatherData = response.body()!!
                 } else {
-                    throw HTTPResponseCodeException(response.code().toString())
+                    throw HTTPResponseCodeException(response.message().toString())
                 }
             } catch (e: HttpException) {
                 Log.d(e.code().toString(), e.message())
                 // Toast.makeText("Exception ${e.message}")
-                throw e
+                throw HTTPResponseCodeException(e.message().toString())
             }
         }
         return listOfWeatherData

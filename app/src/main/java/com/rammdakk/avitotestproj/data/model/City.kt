@@ -11,5 +11,6 @@ data class CityInfo(
     @SerializedName("name")
     val name: String,
     @SerializedName("name")
-    val curentTemp: Double
+    val currentTemp: Double,
+    val definedByGeo: Boolean
 )

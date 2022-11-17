@@ -39,7 +39,7 @@ class WeatherFragment : Fragment() {
             binding = binding,
             lifecycleOwner = viewLifecycleOwner
         ).apply {
-            weatherController.setUpViews()
+            weatherController.setUp()
         }
         return view
     }
