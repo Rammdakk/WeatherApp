@@ -18,6 +18,7 @@ class WeatherViewModel(
     val error = weatherUseCase.error
     val cityInfo = weatherUseCase.cityInfo
     val offlineMessage: MutableLiveData<String> = MutableLiveData("")
+    var isOnline: Boolean = true
 
 
     init {
@@ -25,8 +26,11 @@ class WeatherViewModel(
         connectivityObserver.observe().onEach {
             if (it == ConnectivityObserver.Status.Available) {
                 offlineMessage.postValue("")
+                isOnline = true
             } else {
                 offlineMessage.postValue("Ошибка: Нет доступа к интернету")
+                isOnline = false
+
             }
         }.launchIn(viewModelScope)
     }
@@ -39,7 +43,8 @@ class WeatherViewModel(
         cityName: String?
     ) {
         viewModelScope.launch {
-            weatherUseCase.loadWeather(cnt, units, lat, lon, cityName)
+            if (isOnline)
+                weatherUseCase.loadWeather(cnt, units, lat, lon, cityName)
         }
     }
 }

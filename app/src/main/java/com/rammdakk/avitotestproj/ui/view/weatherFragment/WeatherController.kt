@@ -102,7 +102,7 @@ class WeatherController(
         } else {
             locationManager.requestLocationUpdates(
                 LocationManager.GPS_PROVIDER,
-                200L,
+                600000L,
                 0F,
                 locationListener
             )
