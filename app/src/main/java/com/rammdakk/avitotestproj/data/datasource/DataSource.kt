@@ -1,6 +1,5 @@
 package com.rammdakk.avitotestproj.data.datasource
 
-import android.util.Log
 import com.rammdakk.avitotestproj.data.restApi.HTTPResponseCodeException
 import com.rammdakk.avitotestproj.data.restApi.JsonPlaceHolderApi
 import com.rammdakk.avitotestproj.data.restApi.ListOfWeatherToDate
@@ -40,9 +39,7 @@ class DataSource @Inject constructor(
                     throw HTTPResponseCodeException(response.code().toString())
                 }
             } catch (e: HttpException) {
-                Log.d(e.code().toString(), e.message())
-                throw e
-                // Toast.makeText("Exception ${e.message}")
+                throw HTTPResponseCodeException(e.message().toString())
             }
         }
         return listOfWeatherData
@@ -68,8 +65,6 @@ class DataSource @Inject constructor(
                     throw HTTPResponseCodeException(response.message().toString())
                 }
             } catch (e: HttpException) {
-                Log.d(e.code().toString(), e.message())
-                // Toast.makeText("Exception ${e.message}")
                 throw HTTPResponseCodeException(e.message().toString())
             }
         }

@@ -1,6 +1,5 @@
 package com.rammdakk.avitotestproj.data.repository
 
-import android.util.Log
 import androidx.annotation.MainThread
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -36,7 +35,6 @@ class WeatherRepository @Inject constructor(
         cityName: String?
     ) {
         try {
-            Log.d("fdghajagd", (cityName==null).toString())
             val loadedList = if (cityName != null) {
                 withContext(Dispatchers.IO) {
                     dataSource.loadWeatherByCityName(cityName, cnt, units)

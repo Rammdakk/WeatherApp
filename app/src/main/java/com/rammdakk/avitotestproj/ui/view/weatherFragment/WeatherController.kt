@@ -8,7 +8,6 @@ import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
-import android.util.Log
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
@@ -78,7 +77,6 @@ class WeatherController(
     private fun setUpSearchView() {
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
-                Log.d("searc", "search call")
                 viewModel.loadWeather(cityName = query)
                 return true
             }
@@ -166,7 +164,6 @@ class WeatherController(
 
     private val locationListener: LocationListener = object : LocationListener {
         override fun onLocationChanged(location: Location) {
-            Log.d("Loc", "LocReq")
             if (isMyLocation) {
                 viewModel.loadWeather(
                     lat = location.latitude,
