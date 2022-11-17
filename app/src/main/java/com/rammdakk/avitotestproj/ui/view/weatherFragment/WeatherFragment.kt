@@ -1,32 +1,51 @@
 package com.rammdakk.avitotestproj.ui.view.weatherFragment
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.rammdakk.avitotestproj.R
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import com.rammdakk.avitotestproj.App
+import com.rammdakk.avitotestproj.databinding.FragmentWeatherBinding
+import com.rammdakk.avitotestproj.ioc.WeatherFragmentComponent
+import com.rammdakk.avitotestproj.ioc.WeatherFragmentViewComponent
+import com.rammdakk.avitotestproj.ui.stateholders.WeatherViewModel
 
 class WeatherFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = WeatherFragment()
-    }
+    private val applicationComponent
+        get() = App.get(requireContext()).applicationComponent
+    private lateinit var fragmentComponent: WeatherFragmentComponent
+    private var fragmentViewComponent: WeatherFragmentViewComponent? = null
+    private val viewModel: WeatherViewModel by viewModels { applicationComponent.getViewModelFactory() }
+    private lateinit var binding: FragmentWeatherBinding
 
-    private lateinit var viewModel: WeatherViewModel
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        fragmentComponent = WeatherFragmentComponent(fragment = this, viewModel = viewModel)
+    }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_weather, container, false)
+    ): View {
+        binding = FragmentWeatherBinding.inflate(inflater, container, false)
+        val view = binding.root
+        fragmentViewComponent = WeatherFragmentViewComponent(
+            fragmentComponent = fragmentComponent,
+            root = view,
+            binding = binding,
+            lifecycleOwner = viewLifecycleOwner
+        ).apply {
+            weatherController.setUp()
+        }
+        return view
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(WeatherViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onDestroyView() {
+        super.onDestroyView()
+        fragmentViewComponent = null
     }
-
 }

@@ -1,44 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="15dp"
-    android:orientation="vertical"
-    tools:context=".ui.view.weatherFragment.WeatherFragment">
+    android:layout_height="match_parent">
 
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 
-    <android.widget.SearchView
+        android:id="@+id/swipe_refresh"
         android:layout_width="match_parent"
-        android:layout_height="40dp" />
+        android:layout_height="match_parent"
+        android:layout_margin="15dp"
+        android:padding="15dp">
 
-    <TextView
-        android:id="@+id/todayDayWeatherHeaderTextView"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="20dp"
-        android:text="TextView" />
+        <LinearLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:context=".ui.view.weatherFragment.WeatherFragment">
 
-    <TextView
-        android:id="@+id/todayDayWeatherBodyTextView"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:text="TextView" />
+            <android.widget.SearchView
+                android:id="@+id/search_view"
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/todayAllForecastRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_marginTop="10dp" />
+            <TextView
+                android:id="@+id/todayDayWeatherHeaderTextView"
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                android:layout_marginTop="20dp"
+                android:textAlignment="center"
+                android:textSize="48sp" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/weekForecastRecycleView"
-        android:layout_width="match_parent"
-        android:layout_height="281dp"
-        android:layout_marginTop="20dp"
-        android:orientation="vertical"
-        android:paddingTop="20dp" />
+            <TextView
+                android:id="@+id/todayDayWeatherBodyTextView"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:textAlignment="center"
+                android:textSize="58sp"
+                android:textStyle="bold" />
 
-</LinearLayout>
+            <Button
+                android:id="@+id/myLocationButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="@string/location_button_text" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/weekForecastRecycleView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                android:paddingTop="20dp" />
+
+        </LinearLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</FrameLayout>

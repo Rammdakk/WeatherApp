@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">AvitoTestProj</string>
+    <string name="app_name">WeatherApp</string>
+    <string name="temper_string">%.2f°</string>
+    <string name="location_button_text">To my location</string>
 </resources>
