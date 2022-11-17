@@ -1,12 +1,14 @@
 package com.rammdakk.avitotestproj.ui.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.rammdakk.avitotestproj.R
+import androidx.appcompat.app.AppCompatActivity
+import com.rammdakk.avitotestproj.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        val binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
     }
 }

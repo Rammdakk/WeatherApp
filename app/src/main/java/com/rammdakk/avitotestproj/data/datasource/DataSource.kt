@@ -16,7 +16,7 @@ class DataSource @Inject constructor(
     private val jsonPlaceHolderApi: JsonPlaceHolderApi,
 ) {
 
-    val ACCESS_KEY = "7cd5c37626cce6c6d36726c58b931504"
+    private val ACCESS_KEY = "7cd5c37626cce6c6d36726c58b931504"
 
     suspend fun loadWeatherByLoc(
         lat: Double,
@@ -31,7 +31,7 @@ class DataSource @Inject constructor(
             numberOfAnswers = cnt,
             unit = units
         )
-        var listOfWeatherData = ListOfWeatherToDate(emptyList())
+        var listOfWeatherData: ListOfWeatherToDate
         withContext(Dispatchers.Main) {
             try {
                 if (response.isSuccessful) {
@@ -41,6 +41,7 @@ class DataSource @Inject constructor(
                 }
             } catch (e: HttpException) {
                 Log.d(e.code().toString(), e.message())
+                throw e
                 // Toast.makeText("Exception ${e.message}")
             }
         }
@@ -58,7 +59,7 @@ class DataSource @Inject constructor(
             numberOfAnswers = cnt,
             unit = units
         )
-        var listOfWeatherData = ListOfWeatherToDate(emptyList())
+        var listOfWeatherData: ListOfWeatherToDate
         withContext(Dispatchers.Main) {
             try {
                 if (response.isSuccessful) {
@@ -69,6 +70,7 @@ class DataSource @Inject constructor(
             } catch (e: HttpException) {
                 Log.d(e.code().toString(), e.message())
                 // Toast.makeText("Exception ${e.message}")
+                throw e
             }
         }
         return listOfWeatherData

@@ -5,7 +5,8 @@ import com.google.gson.annotations.SerializedName
 data class WeatherToDate(
     @SerializedName("dt")
     var dateTime: Long = System.currentTimeMillis() / 1000,
-    var main: Temperature
+    @SerializedName("main")
+    var temp: Temperature
 )
 
 data class Temperature(

@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.rammdakk.avitotestproj.connectivity.ConnectivityObserver
-import com.rammdakk.avitotestproj.data.repository.WeatherRepository
+import com.rammdakk.avitotestproj.data.restApi.Units
 import com.rammdakk.avitotestproj.domain.WeatherUseCase
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -16,6 +16,7 @@ class WeatherViewModel(
 ) : ViewModel() {
     val tasks = weatherUseCase.weathers
     val error = weatherUseCase.error
+    val cityInfo = weatherUseCase.cityInfo
     val offlineMessage: MutableLiveData<String> = MutableLiveData("")
 
 
@@ -23,7 +24,7 @@ class WeatherViewModel(
         offlineMessage.postValue("Ошибка: Нет доступа к интернету")
         connectivityObserver.observe().onEach {
             if (it == ConnectivityObserver.Status.Available) {
-                weatherUseCase.loadAllTasks()
+//                weatherUseCase.loadWeather()
                 offlineMessage.postValue("")
             } else {
                 offlineMessage.postValue("Ошибка: Нет доступа к интернету")
@@ -31,9 +32,15 @@ class WeatherViewModel(
         }.launchIn(viewModelScope)
     }
 
-    fun updateTasks() {
+    fun updateTasks(
+        cnt: Int = 40,
+        units: Units = Units.metric,
+        lat: Double = 0.0,
+        lon: Double = 0.0,
+        cityName: String?
+    ) {
         viewModelScope.launch {
-            weatherUseCase.loadAllTasks()
+            weatherUseCase.loadWeather(cnt, units, lat, lon, cityName)
         }
     }
 }

@@ -1,18 +1,17 @@
 package com.rammdakk.avitotestproj.data.model
 
 import com.google.gson.annotations.SerializedName
-import java.time.LocalDate
-import java.util.Date
+import java.util.*
 
 data class WeatherPerDay(
     @SerializedName("date")
     val date: Date = Date(System.currentTimeMillis()),
     @SerializedName("morningTemp")
-    val morningTemp: Double? = null,
+    var morningTemp: Double? = null,
     @SerializedName("dayTemp")
-    val dayTemp: Double? = null,
+    var dayTemp: Double? = null,
     @SerializedName("evTemp")
-    val evTemp: Double? = null,
+    var evTemp: Double? = null,
     @SerializedName("nightTemp")
-    val nightTemp: Double? = null,
+    var nightTemp: Double? = null,
 )

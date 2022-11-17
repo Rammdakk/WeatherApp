@@ -5,22 +5,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
+import com.rammdakk.avitotestproj.App
 import com.rammdakk.avitotestproj.databinding.FragmentWeatherBinding
-import com.rammdakk.avitotestproj.ioc.ViewModelFactory
 import com.rammdakk.avitotestproj.ioc.WeatherFragmentComponent
 import com.rammdakk.avitotestproj.ioc.WeatherFragmentViewComponent
 import com.rammdakk.avitotestproj.ui.stateholders.WeatherViewModel
 
 class WeatherFragment : Fragment() {
+
+    private val applicationComponent
+        get() = App.get(requireContext()).applicationComponent
     private lateinit var fragmentComponent: WeatherFragmentComponent
     private var fragmentViewComponent: WeatherFragmentViewComponent? = null
-    private lateinit var viewModel: WeatherViewModel
+    private val viewModel: WeatherViewModel by viewModels { applicationComponent.getViewModelFactory() }
     private lateinit var binding: FragmentWeatherBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(this, ViewModelFactory())[WeatherViewModel::class.java]
         fragmentComponent = WeatherFragmentComponent(fragment = this, viewModel = viewModel)
     }
 
@@ -28,8 +30,8 @@ class WeatherFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val binding = FragmentWeatherBinding.inflate(inflater, container, false);
+    ): View {
+        binding = FragmentWeatherBinding.inflate(inflater, container, false)
         val view = binding.root
         fragmentViewComponent = WeatherFragmentViewComponent(
             fragmentComponent = fragmentComponent,

@@ -1,9 +1,10 @@
 package com.rammdakk.avitotestproj.ui.view.weatherFragment
 
 import android.app.Activity
-import android.view.View
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.LifecycleOwner
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.rammdakk.avitotestproj.R
@@ -12,7 +13,6 @@ import com.rammdakk.avitotestproj.ui.stateholders.WeatherViewModel
 
 class WeatherController(
     private val activity: Activity,
-    rootView: View,
     private val binding: FragmentWeatherBinding,
     private val adapter: WeatherAdapter,
     private val lifecycleOwner: LifecycleOwner,
@@ -20,14 +20,22 @@ class WeatherController(
 ) {
     private var bar: Snackbar? = null
     fun setUpViews() {
+        binding.weekForecastRecycleView.addItemDecoration(
+            DividerItemDecoration(
+                binding.weekForecastRecycleView.context,
+                DividerItemDecoration.VERTICAL
+            )
+        )
         setUpErrorsHandling()
         setUpTasksList()
-        setUpButtons()
+        setUpSwipeToRefresh()
     }
 
     private fun setUpErrorsHandling() {
         viewModel.error.observe(lifecycleOwner) { data ->
             Toast.makeText(activity.applicationContext, "Ошибка: $data", Toast.LENGTH_SHORT).show()
+            Log.d("errr", data.toString())
+            binding.swipeRefresh.isRefreshing = false
         }
         viewModel.offlineMessage.observe(lifecycleOwner) { data ->
             if (data.isNotEmpty()) {
@@ -49,12 +57,20 @@ class WeatherController(
         binding.weekForecastRecycleView.adapter = adapter
         viewModel.tasks.observe(lifecycleOwner) { newTasks ->
             adapter.submitList(newTasks)
+            binding.swipeRefresh.isRefreshing = false
+
+        }
+        viewModel.cityInfo.observe(lifecycleOwner) { cityInfo ->
+            binding.todayDayWeatherBodyTextView.text = "${cityInfo.curentTemp}°"
+            binding.todayDayWeatherHeaderTextView.text = cityInfo.name
         }
     }
 
 
-    private fun setUpButtons() {
-        TODO("Add refresh button")
+    private fun setUpSwipeToRefresh() {
+        binding.swipeRefresh.setOnRefreshListener {
+            viewModel.updateTasks(cnt = 40, cityName = "Moscow")
+        }
     }
 
 }

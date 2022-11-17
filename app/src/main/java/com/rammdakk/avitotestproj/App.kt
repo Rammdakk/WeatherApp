@@ -3,12 +3,14 @@ package com.rammdakk.avitotestproj
 import android.app.Application
 import android.content.Context
 import com.rammdakk.avitotestproj.connectivity.ConnectivityModule
-import com.rammdakk.todo.ioc.ApplicationComponent
+import com.rammdakk.avitotestproj.ioc.ApplicationComponent
+import com.rammdakk.avitotestproj.ioc.DaggerApplicationComponent
+
 
 class App : Application() {
 
     val applicationComponent: ApplicationComponent =
-        DaggerApplicationComponent.builder().databaseModule(DatabaseModule(this))
+        DaggerApplicationComponent.builder()
             .connectivityModule(
                 ConnectivityModule(this)
             ).build()

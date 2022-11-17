@@ -3,19 +3,20 @@ package com.rammdakk.avitotestproj.ui.view.weatherFragment
 import androidx.recyclerview.widget.RecyclerView
 import com.rammdakk.avitotestproj.data.model.WeatherPerDay
 import com.rammdakk.avitotestproj.databinding.WeekForecastCellBinding
-import java.text.DateFormat
-import java.text.SimpleDateFormat
 
 class WeatherViewHolder(
     private val weekForecastCellBinding: WeekForecastCellBinding
 ) : RecyclerView.ViewHolder(weekForecastCellBinding.root) {
 
     fun bind(weatherPerDay: WeatherPerDay) {
-        val formatter: DateFormat = SimpleDateFormat("dd/MM/yyyy")
-        weekForecastCellBinding.dateTV.text = formatter.format(weatherPerDay.date)
-        weekForecastCellBinding.morningNumberTextView.text = "${weatherPerDay.morningTemp}°"
-        weekForecastCellBinding.dayNumberTextView.text = "${weatherPerDay.dayTemp}°"
-        weekForecastCellBinding.eveningNumberTextView.text = "${weatherPerDay.evTemp}°"
-        weekForecastCellBinding.nightNumberTextView.text = "${weatherPerDay.nightTemp}°"
+        weekForecastCellBinding.dateTV.text = weatherPerDay.date.toString()
+        weekForecastCellBinding.morningNumberTextView.text =
+            if (weatherPerDay.morningTemp != null) "${weatherPerDay.morningTemp}°" else "-"
+        weekForecastCellBinding.dayNumberTextView.text =
+            if (weatherPerDay.dayTemp != null) "${weatherPerDay.dayTemp}°" else "-"
+        weekForecastCellBinding.eveningNumberTextView.text =
+            if (weatherPerDay.evTemp != null) "${weatherPerDay.evTemp}°" else "-"
+        weekForecastCellBinding.nightNumberTextView.text =
+            if (weatherPerDay.nightTemp != null) "${weatherPerDay.nightTemp}°" else "-"
     }
 }

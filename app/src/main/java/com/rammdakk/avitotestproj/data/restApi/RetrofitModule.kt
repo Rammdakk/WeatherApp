@@ -11,7 +11,7 @@ object RetrofitModule {
     @ApplicationComponentScope
     @Provides
     fun jsonPlaceHolderApi(): JsonPlaceHolderApi {
-        return Retrofit.Builder().baseUrl("https://api.openweathermap.org/data/2.5/forecast?")
+        return Retrofit.Builder().baseUrl("https://api.openweathermap.org/data/2.5/")
             .addConverterFactory(
                 GsonConverterFactory.create()
             ).client(HttpClient.client).build().create(JsonPlaceHolderApi::class.java)
