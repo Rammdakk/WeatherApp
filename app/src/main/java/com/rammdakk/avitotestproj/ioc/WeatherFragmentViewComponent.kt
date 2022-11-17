@@ -13,7 +13,6 @@ class WeatherFragmentViewComponent(
 ) {
     val weatherController = WeatherController(
         fragmentComponent.fragment.requireActivity(),
-        root,
         binding,
         fragmentComponent.adapter,
         lifecycleOwner,

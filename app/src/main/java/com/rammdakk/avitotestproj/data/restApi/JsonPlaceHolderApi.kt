@@ -5,9 +5,9 @@ import retrofit2.http.*
 
 interface JsonPlaceHolderApi {
 
-    @GET("forecast?appid={key}")
+    @GET("forecast")
     suspend fun getWeatherByLoc(
-        @Path("key") key: String,
+        @Query("appid") key: String,
         @Query("lat") locLat: Double,
         @Query("lon") locLon: Double,
         @Query("cnt") numberOfAnswers: Int,

@@ -2,6 +2,8 @@
 
 
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -13,7 +15,7 @@
         android:layout_margin="15dp"
         android:padding="15dp">
 
-        <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+        <LinearLayout
             android:id="@+id/frameLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -27,93 +29,23 @@
             <TextView
                 android:id="@+id/todayDayWeatherHeaderTextView"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="62dp"
                 android:layout_marginTop="20dp"
-                android:text="TextView" />
+                android:textAlignment="center"
+                android:textSize="48sp" />
 
             <TextView
                 android:id="@+id/todayDayWeatherBodyTextView"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:text="TextView" />
-
-            <TableLayout
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:paddingTop="5dp"
-                android:stretchColumns="*">
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:id="@+id/morningTitleTw"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="Утро"
-                        android:textSize="24sp" />
-
-                    <TextView
-                        android:id="@+id/dayTitleTw"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="День"
-                        android:textSize="24sp" />
-
-                    <TextView
-                        android:id="@+id/evTitleTw"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="Вечер"
-                        android:textSize="24sp" />
-
-                    <TextView
-                        android:id="@+id/nightTitleTw"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="Ночь"
-                        android:textSize="24sp" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:id="@+id/morningNumberTw"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="18"
-                        android:textSize="32sp" />
-
-                    <TextView
-                        android:id="@+id/dayNumberTw"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="20"
-                        android:textSize="32sp" />
-
-                    <TextView
-                        android:id="@+id/evNumberTw"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="15"
-                        android:textSize="32sp" />
-
-                    <TextView
-                        android:id="@+id/nightNumberTw"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="10"
-                        android:textSize="32sp" />
-                </TableRow>
-            </TableLayout>
+                android:layout_height="70dp"
+                android:textAlignment="center"
+                android:textSize="58sp"
+                android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/weekForecastRecycleView"
                 android:layout_width="match_parent"
-                android:layout_height="418dp"
+                android:layout_height="461dp"
                 android:layout_marginTop="20dp"
                 android:orientation="vertical"
                 android:paddingTop="20dp" />

@@ -1,5 +1,6 @@
 package com.rammdakk.avitotestproj.data.repository
 
+import android.util.Log
 import androidx.annotation.MainThread
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -51,10 +52,10 @@ class WeatherRepository @Inject constructor(
                 val calendar = GregorianCalendar.getInstance()
                 calendar.time = Date(item.dateTime * 1000)
                 when (calendar.get(Calendar.HOUR_OF_DAY)) {
+                    3 -> data?.nightTemp = item.temp.temperature
                     9 -> data?.morningTemp = item.temp.temperature
                     15 -> data?.dayTemp = item.temp.temperature
                     21 -> data?.evTemp = item.temp.temperature
-                    3 -> data?.nightTemp = item.temp.temperature
                 }
             }
             _cityInfo.postValue(CityInfo(loadedList.city.name, loadedList.list[0].temp.temperature))
