@@ -1,5 +1,10 @@
 <resources>
-    <string name="app_name">WeatherApp</string>
+    <string name="app_name">Погода</string>
     <string name="temper_string">%.2f°</string>
-    <string name="location_button_text">To my location</string>
+    <string name="location_button_text">На мое местоположение</string>
+    <string name="search_hint">"Введите город"</string>
+    <string name="morning">"Утро"</string>
+    <string name="day">"День"</string>
+    <string name="evening">"Вечер"</string>
+    <string name="night">"Ночь"</string>
 </resources>

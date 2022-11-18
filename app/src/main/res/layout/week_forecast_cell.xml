@@ -16,7 +16,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_span="4"
-            android:text="22/01/2022"
             android:textAlignment="center"
             android:textSize="22sp"
             android:textStyle="bold"
@@ -31,7 +30,7 @@
 
         <TextView
             android:id="@+id/nightHeaderTextView"
-            android:text="Ночь"
+            android:text="@string/night"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -40,7 +39,7 @@
 
         <TextView
             android:id="@+id/morningHeaderTextView"
-            android:text="Утро"
+            android:text="@string/morning"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/eveningHeaderTextView"
@@ -50,7 +49,7 @@
 
         <TextView
             android:id="@+id/dayHeaderTextView"
-            android:text="День"
+            android:text="@string/day"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/morningHeaderTextView"
@@ -59,7 +58,7 @@
 
         <TextView
             android:id="@+id/eveningHeaderTextView"
-            android:text="Вечер"
+            android:text="@string/evening"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/dayHeaderTextView"
